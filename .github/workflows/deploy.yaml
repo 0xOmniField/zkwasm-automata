@@ -32,7 +32,7 @@ jobs:
         run: |
           IMAGE_URL="registry.cn-hongkong.aliyuncs.com/omni-new/zkwasm-server:${COMMIT_SHA}"
           echo $IMAGE_URL
-          docker build -t ${IMAGE_URL} -f service.docker .
+          docker build -t ${IMAGE_URL} -f deploy/service.docker .
           docker push ${IMAGE_URL}
       - name: Update Deploy Version
         run: |
