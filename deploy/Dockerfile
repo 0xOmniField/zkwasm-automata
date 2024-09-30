@@ -47,7 +47,7 @@ WORKDIR /usr/src/zkwasm-automata/ts
 RUN npm install
 
 WORKDIR /usr/src/zkwasm-automata
-RUN  ls && make
+RUN  cargo install wasm-opt && ls && make
 
 WORKDIR /usr/src
 
