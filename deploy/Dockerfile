@@ -38,19 +38,19 @@ WORKDIR /usr/src/zkwasm-typescript-mini-server
 RUN  curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 # Set the working directory inside the container
-WORKDIR /usr/src/zkwasm-typescript-mini-server
+WORKDIR /usr/src/zkwasm-automata
 
-COPY . zkwasm-automata
+COPY . .
 
-WORKDIR /usr/src/zkwasm-typescript-mini-server/zkwasm-automata/ts
+WORKDIR /usr/src/zkwasm-automata/zkwasm-automata/ts
 
 RUN npm install
 
-WORKDIR /usr/src/zkwasm-typescript-mini-server/zkwasm-automata
+WORKDIR /usr/src/zkwasm-automata/zkwasm-automata
 
 RUN  ls && make
 
-WORKDIR /usr/src/zkwasm-typescript-mini-server
+WORKDIR /usr/src
 
 # Create the supervisor configuration directory
 RUN mkdir -p /etc/supervisor/conf.d
