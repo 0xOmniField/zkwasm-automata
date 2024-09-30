@@ -1,7 +1,7 @@
 # Use the official Rust image from the Docker Hub
 FROM registry.cn-hongkong.aliyuncs.com/omni-new/zkbase:1.0.0
 
-RUN  curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -p /usr/local
+RUN  curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 # Set the working directory inside the container
 WORKDIR /usr/src/zkwasm-typescript-mini-server
