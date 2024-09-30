@@ -42,12 +42,11 @@ WORKDIR /usr/src/zkwasm-automata
 
 COPY . .
 
-WORKDIR /usr/src/zkwasm-automata/zkwasm-automata/ts
+WORKDIR /usr/src/zkwasm-automata/ts
 
 RUN npm install
 
-WORKDIR /usr/src/zkwasm-automata/zkwasm-automata
-
+WORKDIR /usr/src/zkwasm-automata
 RUN  ls && make
 
 WORKDIR /usr/src
