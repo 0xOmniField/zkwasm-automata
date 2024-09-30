@@ -1,6 +1,6 @@
 # Use the official Rust image from the Docker Hub
 
-registry.cn-hongkong.aliyuncs.com/omni-new/zk-new-base:1.0.0
+from registry.cn-hongkong.aliyuncs.com/omni-new/zk-new-base:1.0.0
 
 WORKDIR /usr/src/
 
