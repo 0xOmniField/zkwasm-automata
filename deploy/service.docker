@@ -2,16 +2,6 @@
 
 from registry.cn-hongkong.aliyuncs.com/omni-new/zk-new-base:1.0.0
 
-WORKDIR /usr/src/
-
-# Clone the GitHub repository
-RUN git clone https://github.com/DelphinusLab/zkwasm-mini-rollup
-
-WORKDIR /usr/src/zkwasm-mini-rollup/dbservice
-
-# Build the application
-RUN cargo build --release
-
 # Set the working directory inside the container
 WORKDIR /usr/src/zkwasm-automata
 
@@ -27,16 +17,12 @@ RUN make
 
 WORKDIR /usr/src
 
-# Create the supervisor configuration directory
-RUN mkdir -p /etc/supervisor/conf.d
-RUN cp zkwasm-automata/deploy/supervisord.conf /etc/supervisor/supervisord.conf
 RUN cp zkwasm-automata/deploy/start.sh ./start.sh
 
 EXPOSE 3000
 
 # Run the application
 CMD ["sh", "start.sh"]
-#CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
 
 
