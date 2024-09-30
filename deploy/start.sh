@@ -1,4 +1,4 @@
-./usr/src/zkwasm-automata/target/release/csm_service --uri $URI & node /usr/src/zkwasm-automata/zkwasm-ts-server/node_modules/zkwasm-ts-server/src/service.js redis
+./usr/src/zkwasm-typescript-mini-server/target/release/csm_service --uri $URI & node /usr/src/zkwasm-automata/node_modules/zkwasm-ts-server/src/service.js redis
 
 # Wait for any process to exit
 wait -n
