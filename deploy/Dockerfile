@@ -35,15 +35,33 @@ RUN cargo build --release
 # Set the working directory inside the container
 WORKDIR /usr/src/zkwasm-typescript-mini-server
 
+RUN  curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+# Set the working directory inside the container
+WORKDIR /usr/src/zkwasm-typescript-mini-server
+
+COPY . zkwasm-automata
+
+WORKDIR /usr/src/zkwasm-typescript-mini-server/zkwasm-automata/ts
+
+RUN npm install
+
+WORKDIR /usr/src/zkwasm-typescript-mini-server/zkwasm-automata
+
+RUN  ls && make
+
+WORKDIR /usr/src/zkwasm-typescript-mini-server
+
 # Create the supervisor configuration directory
 RUN mkdir -p /etc/supervisor/conf.d
-COPY ./deploy/supervisord.conf /etc/supervisor/supervisord.conf
-COPY ./deploy/start.sh ./start.sh
+RUN cp zkwasm-automata/deploy/supervisord.conf /etc/supervisor/supervisord.conf
+RUN cp zkwasm-automata/deploy/start.sh ./start.sh
 
-COPY ./ts ./zkwasm-ts-server
+RUN cp -R zkwasm-automata/ts ./zkwasm-ts-server
 
 EXPOSE 3000
 
 # Run the application
 CMD ["sh", "start.sh"]
 #CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+
