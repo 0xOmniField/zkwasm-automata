@@ -1,9 +1,7 @@
 # Use the official Rust image from the Docker Hub
 
-FROM registry.cn-hongkong.aliyuncs.com/omni-new/zkbase:1.0.0
+FROM registry.cn-hongkong.aliyuncs.com/omni-new/zkbase:1.0.1
 
-
-RUN  curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 
 # Set the working directory inside the container
@@ -17,7 +15,7 @@ RUN npm install
 
 WORKDIR /usr/src/zkwasm-automata
 
-RUN  cargo install wasm-opt && ls && make
+RUN make
 
 WORKDIR /usr/src
 
